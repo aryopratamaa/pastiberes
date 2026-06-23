@@ -13,6 +13,17 @@ return new class extends Migration
     {
         Schema::create('bengkels', function (Blueprint $table) {
             $table->id();
+
+            $table->string('namabengkel', 255)->unique();
+            $table->string('alamat', 255);
+            $table->text('deskripsi')->nullable();
+
+            // Foreign Key ke tipe_layanan
+            $table->foreignId('tipeID')
+                ->constrained('tipe_layanans')
+                ->cascadeOnUpdate()
+                ->restrictOnDelete();
+
             $table->timestamps();
         });
     }

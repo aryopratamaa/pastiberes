@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('tipe_layanans', function (Blueprint $table) {
             $table->id();
+            $table->string('tipe', 255);
+            $table->text('deskripsi')->nullable();
             $table->timestamps();
         });
     }

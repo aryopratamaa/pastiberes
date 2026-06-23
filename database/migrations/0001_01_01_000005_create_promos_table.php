@@ -13,6 +13,15 @@ return new class extends Migration
     {
         Schema::create('promos', function (Blueprint $table) {
             $table->id();
+
+            $table->integer('persen');
+            $table->date('mulai_tgl');
+            $table->date('hingga_tgl');
+
+            $table->foreignId('bengkelID')
+                ->constrained('bengkels')
+                ->onDelete('cascade');
+
             $table->timestamps();
         });
     }
