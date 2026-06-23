@@ -1,20 +1,20 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use app\Http\Controllers\DasborController;
-use app\Http\Controllers\TipeLayananController;
-use app\Http\Controllers\BengkelController;
-use app\Http\Controllers\UserController;
-use app\Http\Controllers\PromoController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\TipeLayananController;
+use App\Http\Controllers\BengkelController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\PromoController;
 
 // Route::get('/', function () {
 //     return view('welcome');
 // });
 
 
-Route::get("/", [DasborController::class,"index"])->name('dashboard');
+Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 
 Route::resource('tipelayanan', TipeLayananController::class);
-Route::resource('bengkels', BengkelController::class);
-Route::resource('users', UserController::class);
-Route::resource('promos', PromoController::class);
+Route::resource('bengkel', BengkelController::class);
+Route::resource('user', UserController::class);
+Route::resource('promo', PromoController::class);
