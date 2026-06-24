@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\TipeLayanan;
+use App\Models\Bengkel;
+use App\Models\User;
+use App\Models\Promo;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -11,7 +15,25 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        return view('dashboard');
+        // 1. Menghitung total data untuk ditampilkan di Card atas
+        $totalLayanan = TipeLayanan::count();
+        $totalBengkel = Bengkel::count();
+        $totalUser = User::count();
+        $totalPromo = Promo::count();
+
+        // 2. Mengambil 5 data terbaru untuk ditampilkan di Tabel
+        $bengkelTerbaru = Bengkel::with('tipeLayanan')->latest()->limit(5)->get();
+        $promoTerbaru = Promo::with('bengkel')->latest()->limit(5)->get();
+
+        // 3. Mengirim semua variabel ke view dashboard
+        return view('dashboard', compact(
+            'totalLayanan', 
+            'totalBengkel', 
+            'totalUser', 
+            'totalPromo',
+            'bengkelTerbaru',
+            'promoTerbaru'
+        ));
     }
 
     /**
