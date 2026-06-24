@@ -23,8 +23,8 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'bengkelID',
-        'role',
+        'BengkelsID', 
+        'role'
     ];
 
     /**
@@ -52,6 +52,6 @@ class User extends Authenticatable
 
     public function bengkel()
     {
-        return $this->belongsTo(Bengkel::class, 'bengkelID');
+        return $this->belongsTo(Bengkel::class, 'BengkelsID');
     }
 }
