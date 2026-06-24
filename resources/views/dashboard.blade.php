@@ -68,7 +68,10 @@
             <div class="card h-100 shadow-sm">
                 <div class="card-body">
                     <h5 class="card-title fw-semibold mb-3">Distribusi Cabang per Tipe Layanan</h5>
-                    <canvas id="chartTipe" height="220"></canvas>
+                    
+                    <div style="position: relative; height: 280px; width: 100%; display: flex; justify-content: center;">
+                        <canvas id="chartTipe"></canvas>
+                    </div>
                     
                     <table class="table table-sm mt-4 mb-0">
                         <thead>
@@ -96,7 +99,10 @@
             <div class="card h-100 shadow-sm">
                 <div class="card-body">
                     <h5 class="card-title fw-semibold mb-3">Distribusi Pengguna Berdasarkan Role</h5>
-                    <canvas id="chartRole" height="220"></canvas>
+                    
+                    <div style="position: relative; height: 280px; width: 100%; display: flex; justify-content: center;">
+                        <canvas id="chartRole"></canvas>
+                    </div>
 
                     <table class="table table-sm mt-4 mb-0">
                         <thead>
@@ -200,6 +206,7 @@ document.addEventListener('DOMContentLoaded', function () {
         },
         options: {
             responsive: true,
+            maintainAspectRatio: false, // Wajib agar tidak melar
             plugins: { legend: { display: false } },
             scales: { y: { beginAtZero: true, ticks: { precision: 0 } } }
         }
@@ -220,7 +227,12 @@ document.addEventListener('DOMContentLoaded', function () {
         },
         options: {
             responsive: true,
-            maintainAspectRatio: false
+            maintainAspectRatio: false, // Wajib agar tidak melar / bentuk donat bulat sempurna
+            plugins: {
+                legend: {
+                    position: 'bottom'
+                }
+            }
         }
     });
 });

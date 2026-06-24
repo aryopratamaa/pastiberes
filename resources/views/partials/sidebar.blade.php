@@ -3,7 +3,8 @@
         <div class="sidebar-header">
             <div class="d-flex justify-content-between">
                 <div class="logo">
-                    <a href="{{ route('dashboard') }}">
+                    <a href="{{ route('dashboard') }}" class="d-flex align-items-center gap-2">
+                        <i class="bi bi-shield-check fs-4 text-primary"></i>
                         <h4 class="m-0 text-primary">PastiBeres!</h4>
                     </a>
                 </div>
@@ -35,7 +36,7 @@
 
                 <li class="sidebar-item {{ request()->routeIs('bengkel.*') ? 'active' : '' }}">
                     <a href="{{ route('bengkel.index') }}" class='sidebar-link'>
-                        <i class="bi bi-shop"></i>
+                        <i class="bi bi-shop-window"></i>
                         <span>Cabang Bengkel</span>
                     </a>
                 </li>
@@ -56,9 +57,9 @@
 
                 <li class="sidebar-title">Reports</li>
 
-                <li class="sidebar-item has-sub">
+                <li class="sidebar-item has-sub {{ request()->routeIs('report.*') ? 'active' : '' }}">
                     <a href="#" class='sidebar-link'>
-                        <i class="bi bi-file-earmark-pdf-fill"></i>
+                        <i class="bi bi-journal-text"></i>
                         <span>Cetak Laporan</span>
                     </a>
                     <ul class="submenu">
